@@ -1,0 +1,28 @@
+[
+	{
+		"location":"USA",
+		"email":"test@test.com",
+		"sex":"male",
+		"age":"Unkown",
+		"other":null,
+		"profile":
+			{
+				"net":["55","56"],
+				"networks":[
+					{
+						"site_url":"http://site.com",
+						"network":"test",
+						"username":"mike"
+					},
+					
+					{
+					"site_url":"http://site.com/2",
+					"network":"test2",
+					"username":"mike2"
+					}
+					]
+			},
+		"name":"Mike Jones",
+		"id":111
+	}
+]
