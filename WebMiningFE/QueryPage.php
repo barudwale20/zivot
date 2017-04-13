@@ -110,16 +110,17 @@ input[type=email]:focus {
 	
 	<body>
 		<div align="right" class="1">
-		<font color="#5D6D7E"> <span style="float:left; font-size:25px"> HEALTHCARE.COM </span></font>
+		<font color="#5D6D7E"> <span style="float:left; font-size:25px"> ZIVOT.COM </span></font>
+		<a href="Map.html"><input type="button" name="nearby" id="nearby" value="Nearby" class="button"></a>
 		<a href="FreqSearch.php"><input type="button" name="fq" id="fq" value="Freqent Searches" class="button"></a>
 		<a><input type="button" name="Contact" id="contact" value="Contact Us" class="button"></a>
 		<a href="QueryPage.php"><input type="button" name="home" id="home" value="Home" class="button"></a>
 		</div>
 
 <p>
-<h1 class="head" style="font-family:Times New Roman; color:White; font-size:50px">HEALHCARE
+<h1 class="head" style="font-family:Times New Roman; color:White; font-size:50px">ZIVOT
 <hr>
-<font size="5px" color="#FFB300"><center>You don't need a doctor! </font> 
+<font size="5px" color="#FFB300"><center>Be your own doctor! </font> 
 </h1>
 </p>
 <form name="querypage" method="POST" action="WebMining.php">

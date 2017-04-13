@@ -110,16 +110,17 @@ input[type=email]:focus {
 	
 	<body>
 		<div align="right" class="1">
-		<font color="#5D6D7E"> <span style="float:left; font-size:25px"> HEALTHCARE.COM </span></font>
+		<font color="#5D6D7E"> <span style="float:left; font-size:25px"> ZIVOT.COM </span></font>
+		<a href="Map.html"><input type="button" name="nearby" id="nearby" value="Nearby" class="button"></a>
 		<a href="FreqSearch.php"><input type="button" name="fq" id="fq" value="Freqent Searches" class="button"></a>
 		<a><input type="button" name="Contact" id="contact" value="Contact Us" class="button"></a>
 		<a href="QueryPage.php"><input type="button" name="home" id="home" value="Home" class="button"></a>
 		</div>
 		
 		<p>
-		<h1 class="head" style="font-family:Times New Roman; color:White; font-size:50px">HEALHCARE
+		<h1 class="head" style="font-family:Times New Roman; color:White; font-size:50px">ZIVOT
 		<hr>
-		<font size="5px" color="#FFB300"><center>You don't need a doctor! </font> 
+		<font size="5px" color="#FFB300"><center>Be your own doctor! </font> 
 		</h1>
 		</p>
 
@@ -254,7 +255,7 @@ input[type=email]:focus {
 						$c++;
 					if(strpos($z,$inp31)!==false || strpos($z,$inp32)!==false || strpos($z,$inp33)!==false || strpos($z,$inp34)!==false)
 						$c++;
-				}
+				
 					if($c==3)
 					{
 						echo "<center><h2><font color='red'>".$x['topic']."</font></h2></center><br>";
@@ -264,40 +265,16 @@ input[type=email]:focus {
 							
 							echo "<b><li><font color='#566573'>".$v."</font></li></b></br>";
 						}
+						
+						echo"<form name='moreinfo' method='POST' action='More.php'> <input type='submit' name='more' id='more' value='".$x['topic']."' class='button'></form>";
 					}
-					$c=0;
+					if($c==3)
+					{
+						$c=0;
+						break;
+					}
+				}	
 			}
-					
-			
-			
-			foreach($x as $y)	
-			{
-				if(sizeof($y)==1)
-					continue;
-				foreach($y as $z)
-				{
-					
-					//if((strpos($z,$inp11)!==false || strpos($z,$inp12)!==false || strpos($z,$inp13)!==false || strpos($z,$inp14)!==false) || (strpos($z,$inp21)!==false || strpos($z,$inp22)!==false || strpos($z,$inp23)!==false || strpos($z,$inp24)!==false) || (strpos($z,$inp31)!==false || strpos($z,$inp32)!==false || strpos($z,$inp33)!==false || strpos($z,$inp34)!==false))
-					if(strpos($z,$inp11)!==false || strpos($z,$inp12)!==false || strpos($z,$inp13)!==false || strpos($z,$inp14)!==false)
-						$c++;
-					if(strpos($z,$inp21)!==false || strpos($z,$inp22)!==false || strpos($z,$inp23)!==false || strpos($z,$inp24)!==false)
-						$c++;
-					if(strpos($z,$inp31)!==false || strpos($z,$inp32)!==false || strpos($z,$inp33)!==false || strpos($z,$inp34)!==false)
-						$c++;
-					if($c==3)
-					{
-						echo "<center><h2><font color='red'>".$x['topic']."</font></h2></center><br>";
-						
-						foreach($x['symptoms'] as $v)
-						{
-							
-							echo "<b><li><font color='#566573'>".$v."</font></li></b></br>";
-						}
-					}
-					$c=0;
-				}
-			
-			}		
 		}		
 	}
 	
@@ -333,7 +310,7 @@ input[type=email]:focus {
 						$c++;
 					if(strpos($z,$inp21)!==false || strpos($z,$inp22)!==false || strpos($z,$inp23)!==false || strpos($z,$inp24)!==false)
 						$c++;
-				}
+				
 					if($c==2)
 					{
 						echo "<center><h2><font color='red'>".$x['topic']."</font></h2></center><br>";
@@ -343,39 +320,16 @@ input[type=email]:focus {
 							
 							echo "<b><li><font color='#566573'>".$v."</font></li></b></br>";
 						}
+						
+						echo"<form name='moreinfo' method='POST' action='More.php'> <input type='submit' name='more' id='more' value='".$x['topic']."' class='button'></form>";
 					}
-					$c=0;
+					if($c==2)
+					{
+						$c=0;
+						break;
+					}
+				}	
 			}
-					
-			
-			
-			foreach($x as $y)	
-			{
-				if(sizeof($y)==1)
-					continue;
-				foreach($y as $z)
-				{
-					
-					//if((strpos($z,$inp11)!==false || strpos($z,$inp12)!==false || strpos($z,$inp13)!==false || strpos($z,$inp14)!==false) || (strpos($z,$inp21)!==false || strpos($z,$inp22)!==false || strpos($z,$inp23)!==false || strpos($z,$inp24)!==false) || (strpos($z,$inp31)!==false || strpos($z,$inp32)!==false || strpos($z,$inp33)!==false || strpos($z,$inp34)!==false))
-					if(strpos($z,$inp11)!==false || strpos($z,$inp12)!==false || strpos($z,$inp13)!==false || strpos($z,$inp14)!==false)
-						$c++;
-					if(strpos($z,$inp21)!==false || strpos($z,$inp22)!==false || strpos($z,$inp23)!==false || strpos($z,$inp24)!==false)
-						$c++;
-					
-					if($c==2)
-					{
-						echo "<center><h2><font color='red'>".$x['topic']."</font></h2></center><br>";
-						
-						foreach($x['symptoms'] as $v)
-						{
-							
-							echo "<b><li><font color='#566573'>".$v."</font></li></b></br>";
-						}
-					}
-					$c=0;
-				}
-			
-			}		
 		}		
 	}
 	
@@ -405,7 +359,7 @@ input[type=email]:focus {
 					//if((strpos($z,$inp11)!==false || strpos($z,$inp12)!==false || strpos($z,$inp13)!==false || strpos($z,$inp14)!==false) || (strpos($z,$inp21)!==false || strpos($z,$inp22)!==false || strpos($z,$inp23)!==false || strpos($z,$inp24)!==false) || (strpos($z,$inp31)!==false || strpos($z,$inp32)!==false || strpos($z,$inp33)!==false || strpos($z,$inp34)!==false))
 					if(strpos($z,$inp11)!==false || strpos($z,$inp12)!==false || strpos($z,$inp13)!==false || strpos($z,$inp14)!==false)
 						$c++;
-				}
+				
 					if($c==1)
 					{
 						echo "<center><h2><font color='red'>".$x['topic']."</font></h2></center><br>";
@@ -415,37 +369,17 @@ input[type=email]:focus {
 							
 							echo "<b><li><font color='#566573'>".$v."</font></li></b></br>";
 						}
+						
+						echo"<form name='moreinfo' method='POST' action='More.php'> <input type='submit' name='more' id='more' value='".$x['topic']."' class='button'></form>";
+						
 					}
-					$c=0;
+					if($c==1)
+					{
+						$c=0;
+						break;
+					}
+				}
 			}
-					
-			
-			
-			foreach($x as $y)	
-			{
-				if(sizeof($y)==1)
-					continue;
-				foreach($y as $z)
-				{
-					
-					//if((strpos($z,$inp11)!==false || strpos($z,$inp12)!==false || strpos($z,$inp13)!==false || strpos($z,$inp14)!==false) || (strpos($z,$inp21)!==false || strpos($z,$inp22)!==false || strpos($z,$inp23)!==false || strpos($z,$inp24)!==false) || (strpos($z,$inp31)!==false || strpos($z,$inp32)!==false || strpos($z,$inp33)!==false || strpos($z,$inp34)!==false))
-					if(strpos($z,$inp11)!==false || strpos($z,$inp12)!==false || strpos($z,$inp13)!==false || strpos($z,$inp14)!==false)
-						$c++;
-
-					if($c==1)
-					{
-						echo "<center><h2><font color='red'>".$x['topic']."</font></h2></center><br>";
-						
-						foreach($x['symptoms'] as $v)
-						{
-							
-							echo "<b><li><font color='#566573'>".$v."</font></li></b></br>";
-						}
-					}
-					$c=0;
-				}
-			
-			}		
 		}		
 	}
 	
