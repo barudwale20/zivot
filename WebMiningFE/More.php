@@ -126,9 +126,45 @@ input[type=email]:focus {
 		</p>
 
 	<?php
+	
+		$str = file_get_contents('F:\WebMiningBE\reduceddata.json');
+		$json = json_decode($str, true);
+		
 		if(isset($_POST['more']))
 		{
-			echo $_POST['more'];
+			//echo $_POST['more'];
+			foreach($json as $row)
+			{		//echo $row['topic']."<br>";
+					if($_POST['more']==$row['topic'])
+					{
+						echo "<center><h2><font color='red'>".$row['topic']."</font></h2></center><br>";
+						echo "<center><h2><font color='blue'>".'Symptoms'."</font></h2></center><br>";
+						foreach($row['symptoms'] as $v)
+						{
+							echo "<b><li><font color='#566573'>".$v."</font></li></b></br>";
+						}
+						echo "<center><h2><font color='blue'>".'Tests'."</font></h2></center><br>";
+						foreach($row['tests'] as $v)
+						{
+							echo "<b><li><font color='#566573'>".$v."</font></li></b></br>";
+						}
+						echo "<center><h2><font color='blue'>".'Treatment'."</font></h2></center><br>";
+						foreach($row['treatment'] as $v)
+						{
+							echo "<b><li><font color='#566573'>".$v."</font></li></b></br>";
+						}
+						echo "<center><h2><font color='blue'>".'When to contact doctor?'."</font></h2></center><br>";
+						foreach($row['contact_doctor'] as $v)
+						{
+							echo "<b><li><font color='#566573'>".$v."</font></li></b></br>";
+						}
+						echo "<center><h2><font color='blue'>".'prevention'."</font></h2></center><br>";
+						foreach($row['prevention'] as $v)
+						{
+							echo "<b><li><font color='#566573'>".$v."</font></li></b></br>";
+						}
+					}
+			}	
 		}
 	?>
 

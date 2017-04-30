@@ -116,6 +116,20 @@ input[type=email]:focus {
 		<a><input type="button" name="Contact" id="contact" value="Contact Us" class="button"></a>
 		<a href="QueryPage.php"><input type="button" name="home" id="home" value="Home" class="button"></a>
 		</div>
+<div>		
+		<script>
+			(function() {
+				var cx = '008773267654983734059:tlwskyugile';
+				var gcse = document.createElement('script');
+				gcse.type = 'text/javascript';
+				gcse.async = true;
+				gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(gcse, s);
+			})();
+			</script>
+			<gcse:search></gcse:search>
+</div>
 
 <p>
 <h1 class="head" style="font-family:Times New Roman; color:White; font-size:50px">ZIVOT

@@ -208,8 +208,9 @@ input[type=email]:focus {
 	}
 	
 
-		$str = file_get_contents('F:\WebMiningBE\medicaldata.json');
+		$str = file_get_contents('F:\WebMiningBE\reduceddata.json');
 		$json = json_decode($str, true);
+		//echo $str;
 		
 		echo "<center><h1><font color='#6C3483'>Possible Diseases with Given Symptoms</font></h1></center>";
 
@@ -236,50 +237,60 @@ input[type=email]:focus {
 		$inp34=strtoupper($inp31);
 		
 		$c=0;
-		
-		
-		
-		foreach($json as $x)
-		{
-			foreach($x as $y)	
+		$match_count=0;
+		//echo "testrun";
+		//echo 'part 1';
+		//echo "testrun";
+		foreach($json as $row)
+		{		
+			foreach($row as $col)
 			{
-				if(sizeof($y)==1)
+				//echo "<br>";
+				//echo $col;
+				//echo "testrun";
+				$c=0;
+				if(sizeof($col)==1)
 					continue;
-				foreach($y as $z)
+				foreach($col as $symptom)
 				{
 					
-					//if((strpos($z,$inp11)!==false || strpos($z,$inp12)!==false || strpos($z,$inp13)!==false || strpos($z,$inp14)!==false) || (strpos($z,$inp21)!==false || strpos($z,$inp22)!==false || strpos($z,$inp23)!==false || strpos($z,$inp24)!==false) || (strpos($z,$inp31)!==false || strpos($z,$inp32)!==false || strpos($z,$inp33)!==false || strpos($z,$inp34)!==false))
-					if(strpos($z,$inp11)!==false || strpos($z,$inp12)!==false || strpos($z,$inp13)!==false || strpos($z,$inp14)!==false)
+					//echo $symptom."<br>";
+					
+					//if((strpos($symptom,$inp11)!==false || strpos($symptom,$inp12)!==false || strpos($symptom,$inp13)!==false || strpos($symptom,$inp14)!==false) || (strpos($symptom,$inp21)!==false || strpos($symptom,$inp22)!==false || strpos($symptom,$inp23)!==false || strpos($symptom,$inp24)!==false) || (strpos($symptom,$inp31)!==false || strpos($symptom,$inp32)!==false || strpos($symptom,$inp33)!==false || strpos($symptom,$inp34)!==false))
+					if(strpos($symptom,$inp11)!==false || strpos($symptom,$inp12)!==false|| strpos($symptom,$inp13)!==false || strpos($symptom,$inp14)!==false)
 						$c++;
-					if(strpos($z,$inp21)!==false || strpos($z,$inp22)!==false || strpos($z,$inp23)!==false || strpos($z,$inp24)!==false)
+						//echo $c."<br>";
+					if(strpos($symptom,$inp21)!==false || strpos($symptom,$inp22)!==false || strpos($symptom,$inp23)!==false || strpos($symptom,$inp24)!==false)
 						$c++;
-					if(strpos($z,$inp31)!==false || strpos($z,$inp32)!==false || strpos($z,$inp33)!==false || strpos($z,$inp34)!==false)
+						//echo $c."<br>";
+					if(strpos($symptom,$inp31)!==false || strpos($symptom,$inp32)!==false || strpos($symptom,$inp33)!==false || strpos($symptom,$inp34)!==false)
 						$c++;
+						//echo $c."<br>";
+				}
+				if($c==3)
+				{
+					$c=0;
+					//echo $row['topic'];
+					//echo $y;
+					echo "<center><h2><font color='red'>".$row['topic']."</font></h2></center><br>";
+					
+					foreach($row['symptoms'] as $v)
+					{
+						
+						echo "<b><li><font color='#566573'>".$v."</font></li></b></br>";
+					}
+					
+					echo"<form name='moreinfo' method='POST' action='More.php'> <input type='submit' name='more' id='more' value='".$row['topic']."' class='button'></form>";
 				
-					if($c==3)
-					{
-						echo "<center><h2><font color='red'>".$x['topic']."</font></h2></center><br>";
-						
-						foreach($x['symptoms'] as $v)
-						{
-							
-							echo "<b><li><font color='#566573'>".$v."</font></li></b></br>";
-						}
-						
-						echo"<form name='moreinfo' method='POST' action='More.php'> <input type='submit' name='more' id='more' value='".$x['topic']."' class='button'></form>";
-					}
-					if($c==3)
-					{
-						$c=0;
-						break;
-					}
-				}	
+				}
+					
+			
 			}
 		}		
 	}
 	
 	
-		if(isset($_POST['s1'] , $_POST['s2']) && $_POST['s2']!=NULL)
+	if(isset($_POST['s1'] , $_POST['s2']) && $_POST['s2']!=NULL && $_POST['s3']==NULL)
 	{
 		$inp11=$_POST['s1'];
 		$inp11=strtolower($inp11);
@@ -296,10 +307,13 @@ input[type=email]:focus {
 		
 		$c=0;
 		
+		//echo 'part 2';
+		
 		foreach($json as $x)
 		{
 			foreach($x as $y)	
 			{
+				$c=0;
 				if(sizeof($y)==1)
 					continue;
 				foreach($y as $z)
@@ -310,9 +324,10 @@ input[type=email]:focus {
 						$c++;
 					if(strpos($z,$inp21)!==false || strpos($z,$inp22)!==false || strpos($z,$inp23)!==false || strpos($z,$inp24)!==false)
 						$c++;
-				
+				}
 					if($c==2)
 					{
+						$c=0;
 						echo "<center><h2><font color='red'>".$x['topic']."</font></h2></center><br>";
 						
 						foreach($x['symptoms'] as $v)
@@ -323,15 +338,16 @@ input[type=email]:focus {
 						
 						echo"<form name='moreinfo' method='POST' action='More.php'> <input type='submit' name='more' id='more' value='".$x['topic']."' class='button'></form>";
 					}
-					if($c==2)
+				/*	if($c==2)
 					{
 						$c=0;
 						break;
 					}
+				*/	
 				}	
 			}
 		}		
-	}
+	
 	
 	
 	
@@ -347,10 +363,13 @@ input[type=email]:focus {
 		
 		$c=0;
 		
+		//echo 'part 3';
+		
 		foreach($json as $x)
 		{
 			foreach($x as $y)	
 			{
+				$c=0;
 				if(sizeof($y)==1)
 					continue;
 				foreach($y as $z)
@@ -359,9 +378,10 @@ input[type=email]:focus {
 					//if((strpos($z,$inp11)!==false || strpos($z,$inp12)!==false || strpos($z,$inp13)!==false || strpos($z,$inp14)!==false) || (strpos($z,$inp21)!==false || strpos($z,$inp22)!==false || strpos($z,$inp23)!==false || strpos($z,$inp24)!==false) || (strpos($z,$inp31)!==false || strpos($z,$inp32)!==false || strpos($z,$inp33)!==false || strpos($z,$inp34)!==false))
 					if(strpos($z,$inp11)!==false || strpos($z,$inp12)!==false || strpos($z,$inp13)!==false || strpos($z,$inp14)!==false)
 						$c++;
-				
+				}
 					if($c==1)
 					{
+						$c=0;
 						echo "<center><h2><font color='red'>".$x['topic']."</font></h2></center><br>";
 						
 						foreach($x['symptoms'] as $v)
@@ -373,15 +393,16 @@ input[type=email]:focus {
 						echo"<form name='moreinfo' method='POST' action='More.php'> <input type='submit' name='more' id='more' value='".$x['topic']."' class='button'></form>";
 						
 					}
-					if($c==1)
+				/*	if($c==1)
 					{
 						$c=0;
 						break;
 					}
+				*/	
 				}
 			}
 		}		
-	}
+	
 	
 	
 	
